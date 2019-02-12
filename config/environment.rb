@@ -1,5 +1,22 @@
 require 'bundler'
 Bundler.require
+# require "pry"
+# require "sinatra/activerecord"
+# require "rest-client"
+# require "sqlite3"
 
-ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: 'db/development.db')
-require_all 'lib'
+require_relative '../lib/summit.rb'
+require_relative '../lib/user.rb'
+require_relative '../lib/user_setting.rb'
+require_relative '../lib/errors.rb'
+require_relative '../lib/cli.rb'
+
+
+
+
+
+
+ActiveRecord::Base.establish_connection(
+  "adapter"  => "sqlite3",
+  "database" => "db/sota-watch.db"
+)
