@@ -10,6 +10,7 @@ require_relative '../lib/user.rb'
 require_relative '../lib/user_setting.rb'
 require_relative '../lib/errors.rb'
 require_relative '../lib/cli.rb'
+require_relative '../lib/contact.rb'
 
 
 

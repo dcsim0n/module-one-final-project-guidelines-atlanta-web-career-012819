@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   has_many :user_settings
+  has_many :activated, class_name: "Contact", foreign_key: :activator_id
+  has_many :chased, class_name: "Contact", foreign_key: :chaser_id
+
 
   def settings
     #This gives me a named hash to make settings easier
