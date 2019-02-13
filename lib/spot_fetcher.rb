@@ -1,4 +1,0 @@
-class SpotFetch
-  @@spots = {}
-
-end

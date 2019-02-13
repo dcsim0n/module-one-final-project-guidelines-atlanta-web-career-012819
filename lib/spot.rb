@@ -24,13 +24,17 @@ class Spot
       frequency: frequency)
   end
   #create a new spot from web data
-  def self.new_from_web(activator:, activator_call:, summit_code:, frequency:)
-    activator = User.find_or_create_by(name: activator, call_sign: activator_call)
+  def self.new_from_web(web_hash)
+
+    activator = User.find_or_create_by(name: web_hash['activatorName'],
+                                       call_sign: web_hash['activatorCallsign'])
+
+    summit_code = [web_hash['associationCode'],web_hash['summitCode']].join('/')
     summit = Summit.all.find_by(summit_code: summit_code)
     Spot.new(
       activator: activator,
       summit: summit,
-      frequency: frequency
+      frequency: web_hash['frequency']
     )
   end
 

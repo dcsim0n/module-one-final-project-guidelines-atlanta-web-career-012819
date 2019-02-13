@@ -12,6 +12,8 @@ require_relative '../lib/errors.rb'
 require_relative '../lib/cli.rb'
 require_relative '../lib/contact.rb'
 require_relative '../lib/spot.rb'
+require_relative '../lib/fetcher.rb'
+
 
 
 
