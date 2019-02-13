@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
       false
     end
   end
-  def activating=(arg)
+  def activating=(arg) #converts integer to true false
     case arg
     when true
       self.settings['activator'].setting_value = 1
