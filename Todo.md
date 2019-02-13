@@ -3,3 +3,4 @@
 * Lookup new users grid locator from QRZ
 * Calculate band based on frequency
 * Add timestamp
+* Limit number of spots displayed to user_preference
