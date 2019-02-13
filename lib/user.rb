@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   has_many :user_settings
-  has_many :activated, class_name: "Contact", foreign_key: :activator_id
-  has_many :chased, class_name: "Contact", foreign_key: :chaser_id
+  has_many :activator_contacts, class_name: "Contact", foreign_key: :activator_id
+  has_many :chaser_contacts, class_name: "Contact", foreign_key: :chaser_id
+  has_many :chased_summits, through: "Contacts", foreign_key: :chaser_id
 
 
   def settings
