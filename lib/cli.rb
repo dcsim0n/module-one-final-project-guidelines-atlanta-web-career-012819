@@ -20,11 +20,13 @@ class Interface
       case input
       when 'quit'
         @running = false
+      when 'exit'
+        @running = false
       when 'help'
         self.help
       when 'chase'
         if self.user
-          user.activating = false
+          user.activator = false
           puts "Seting status to chasing...."
           puts "Here is some recent activity"
           self.show_spots(2)
@@ -36,7 +38,7 @@ class Interface
         if user == nil
           self.no_user
         else
-          user.activating = true
+          user.activator = true
           puts "Seting status to activating! Yeehaw!"
           puts "Lets activate!"
         end
