@@ -19,15 +19,24 @@ class User < ActiveRecord::Base
     else
       false
     end
-  end
+  end#activating?
+
   def activating=(arg) #converts integer to true false
     case arg
     when true
-      self.settings['activator'].setting_value = 1
+      binding.pry
+      act_set = self.user_settings.find_or_create_by(setting_name:'activator')
+      act_set.setting_value = 1
     when false
       self.settings['activator'].setting_value = 0
     else
       raise NotBool
     end
+  end #activating=()
+  def activator_points
+    activated_summits.reduce(0) {|pts, summit| pts + summit.points}
+  end
+  def chaser_points
+    chased_summits.reduce(0) {|pts, summit| pts + summit.points}
   end
 end

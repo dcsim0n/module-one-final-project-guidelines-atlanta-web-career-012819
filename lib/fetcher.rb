@@ -2,7 +2,7 @@ class Fetcher
   @@spots = {}
   attr_accessor :root_url, :max_spots, :response, :spots
   def initialize(max_spots: 10, filter: nil)
-    @max_spots = 10
+    @max_spots = max_spots
     @filter = nil
     @root_url = 'http://api2.sota.org.uk/api'
     @response = nil

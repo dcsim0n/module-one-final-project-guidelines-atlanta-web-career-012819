@@ -12,6 +12,6 @@ Spot.new_from_web(web)
 
 fetcher = Fetcher.new
 
-fetcher.get_spots
+fetcher.get_spots.each { |spot| Spot.new_from_web(spot) }
 
 binding.pry

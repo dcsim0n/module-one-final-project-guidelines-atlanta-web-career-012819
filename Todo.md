@@ -4,3 +4,7 @@
 * Calculate band based on frequency
 * Add timestamp
 * Limit number of spots displayed to user_preference
+
+
+### User
+* calculate minimum number of QSOs for an activation to be valid
