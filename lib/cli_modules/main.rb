@@ -1,7 +1,8 @@
 module Main
   def get_user_string
     if (input = gets.chomp).length == 0
-      raise NoInput
+      puts "No input, or input is empty"
+      get_user_string
     end
     input
   end #get user string
@@ -30,7 +31,7 @@ module Main
   end #who are you
 
   def help
-    puts '''
+    puts '''`clear`
 activate: _ _ operate as an activator
 chase:        operate as a chaser
 points: _ _ _ view a users SOTA points
@@ -43,6 +44,7 @@ delete users: delete current user profile
 '''
   end
   def no_user
+    puts `clear`
     puts "No user profile, use 'user' to set one"
   end
   def show_spots(num)

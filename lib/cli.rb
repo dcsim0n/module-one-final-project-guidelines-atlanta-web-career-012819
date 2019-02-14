@@ -1,5 +1,5 @@
 class Interface
-  attr_accessor :user, :settings
+  attr_accessor :user, :settings, :spot
   include Activate
   include Chase
   include Main
@@ -7,6 +7,7 @@ class Interface
     @running = true
     @user = nil
     @settings = {max_spots: 4, region_filter: nil, range_filter: nil}
+    @spot = nil
   end
 
   def run    #start the loop
