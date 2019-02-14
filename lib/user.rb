@@ -24,4 +24,13 @@ class User < ActiveRecord::Base
     super(bool)
     self.save
   end
+
+  def contact_from_spot(spot)
+      self.chaser_contacts.create(summit_id: spot.summit.id,
+                                  activator_id: spot.activator.id,
+                                  freq: spot.frequency,
+                                  band: 'no band')
+      self.reload
+
+  end
 end
