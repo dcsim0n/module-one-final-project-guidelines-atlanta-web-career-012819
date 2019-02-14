@@ -46,7 +46,6 @@ module Activate
     puts "Enter name for: #{call}"
     name = get_user_string
     contact = self.user.contact_with_chaser_and_spot(name: name, call_sign: call, spot: self.spot)
-    binding.pry
     puts "Logged contact with #{call} on #{spot.frequency}MHz at #{contact.date} "
   end
 

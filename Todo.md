@@ -13,3 +13,5 @@
 
 ### CLI
 * check for duplicate call signs when using 'new'
+* pull grid squre from hamdb.org
+* uppercase all call signs

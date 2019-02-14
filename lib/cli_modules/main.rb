@@ -46,6 +46,7 @@ delete users: delete current user profile
   def no_user
     puts "No user profile, use 'user' to set one"
   end
+  
   def show_spots(num)
     Spot.clear
     fetcher = Fetcher.new(max_spots: num) unless Spot.all.count > num
