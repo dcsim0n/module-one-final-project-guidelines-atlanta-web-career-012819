@@ -17,10 +17,6 @@ module Activate
       when 'find'
         self.find
       when 'log'
-        unless self.spot
-          puts "Select a summit to activate first"
-          break
-        end
         self.log
       else
         #do seomething else
@@ -38,11 +34,15 @@ module Activate
     end
   end
 
-  def log
-    while @running
-      input = get_user_string
-      end
-    end
+  def log #this is a good place to use the qrz api
+    puts "Enter a chaser Callsign:"
+    call = get_user_string
+    puts "Enter name for: #{call}"
+    name = get_user_string
+    contact = self.user.contact_with_chaser_and_spot(name: name, call_sign: call, spot: self.spot)
+    binding.pry
+    puts "Logged contact with #{call} on #{spot.frequency}MHz at #{contact.date} "
+  end
 
   def create_spot
     puts "Enter summit code:"
@@ -51,7 +51,7 @@ module Activate
       puts "Couldn't find summit #{input}"
       return
     end
-    puts "Activating #{summit.summit_name} for #{summit.points}"
+    puts "Activating #{summit.summit_name} for #{summit.points} points"
     puts "Enter your operating frequency"
     freq = get_user_string.to_f
     self.spot = Spot.new(summit: summit, activator: self.user, frequency: freq)

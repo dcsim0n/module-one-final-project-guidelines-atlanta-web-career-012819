@@ -49,7 +49,6 @@ class Interface
         if self.user
           user.activator = true
           puts "Seting status to activating! Yeehaw!"
-          puts "Lets activate!"
           self.activate
         else
           self.no_user

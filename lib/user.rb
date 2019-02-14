@@ -29,8 +29,19 @@ class User < ActiveRecord::Base
       self.chaser_contacts.create(summit_id: spot.summit.id,
                                   activator_id: spot.activator.id,
                                   freq: spot.frequency,
-                                  band: 'no band')
+                                  band: 'no band',
+                                  date: Time.now)
       self.reload
 
+  end
+
+  def contact_with_chaser_and_spot(name:, call_sign:, spot:)
+    chaser = User.all.find_or_create_by(name: name, call_sign: call_sign)
+    self.activator_contacts.create(summit_id: spot.summit.id,
+                                   chaser_id: chaser.id,
+                                   freq: spot.frequency,
+                                   band: 'no band',
+                                   date: Time.now)
+    self.reload
   end
 end
