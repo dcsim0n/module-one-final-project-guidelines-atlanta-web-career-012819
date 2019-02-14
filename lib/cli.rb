@@ -73,7 +73,7 @@ class Interface
         end
       when 'settings'
         puts "changing your settings..."
-        self.change_settings
+        #self.change_settings
       when 'new'
         self.new_user
       when 'delete user'

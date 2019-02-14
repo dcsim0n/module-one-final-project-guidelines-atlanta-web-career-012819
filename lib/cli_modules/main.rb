@@ -70,19 +70,6 @@ new: _ _ _ _  create a new user
   def change_settings
     puts `clear`
     puts "*** Setings Menu ***"
-    self.settings.each_with_index do |setting, i|
-      puts "(#{i + 1}.) #{setting[0]}: #{setting[1]}"
-    end
-    puts "Enter a setting to change, 'done' to go back to main menu"
-    until (input = get_user_string) == 'done'
-      i = input.to_i - 1
-      puts "Changing #{settings.keys[i]}: #{settings.values[i]}"
-      input = get_user_string
-      binding.pry
-      case settings.keys[i].class
-      when Integer
-        settings[settings.keys[i]] = input.to_i
-      end
-    end
+    puts "Not done yet, view change_settings branch"
   end
 end
