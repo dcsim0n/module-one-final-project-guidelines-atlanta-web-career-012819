@@ -38,6 +38,12 @@ class Spot
     )
   end
 
+  def self.print_formatted_spots
+    self.all.each_with_index do |spot, i|
+      puts self.format_spot(spot.summit, spot.activator, spot.frequency, i)
+    end
+  end
+
   def self.print_formated_spots
     self.all.each_with_index do |spot,i|
       summit_name = spot.summit.summit_name
@@ -54,6 +60,15 @@ class Spot
     end
     nil
   end
+#
+#   def self.format_spot(summit, activator, freq)
+#     puts """\n( #{i + 1}.)*** #{summit_name}, #{height} ft, #{points} points, Summit Code: #{summit_code} ***
+# - #{name} in #{spot.summit.association_name}
+# - Activator Call: #{call}
+# - Frequency: #{freq}\n"""
+#
+#   end
+
   def self.clear
     @@all = []
   end
