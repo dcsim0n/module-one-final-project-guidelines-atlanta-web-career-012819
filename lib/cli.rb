@@ -35,12 +35,13 @@ class Interface
       when 'chase'
         if self.user
           user.activator = false
+          puts `clear`
           puts "Seting status to chasing...."
           puts "Here is some recent activity"
           self.show_spots(2)
           self.chase
         else
-          no_user
+          self.no_user
         end
       when 'contacts'
         #This will be another run loop

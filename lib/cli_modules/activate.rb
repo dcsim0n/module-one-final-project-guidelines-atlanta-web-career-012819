@@ -13,6 +13,7 @@ module Activate
       input = get_user_string
       case input
       when 'main'
+        puts `clear`
         break
       when 'quit'
         @running = false
@@ -23,6 +24,7 @@ module Activate
       when 'spot'
         self.create_spot
       when 'help'
+        puts `clear`
         self.help
       else
         #do seomething else
