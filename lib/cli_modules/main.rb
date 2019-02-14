@@ -44,7 +44,6 @@ delete users: delete current user profile
 '''
   end
   def no_user
-    puts `clear`
     puts "No user profile, use 'user' to set one"
   end
   def show_spots(num)

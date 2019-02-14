@@ -4,7 +4,9 @@ module Activate
     while @running #set to false to exit. Break to got back to main
       if self.spot == nil
         puts "Lets create a spot for others to find you..."
-        self.create_spot
+        until self.spot
+          self.create_spot
+        end
       else
         puts "Use 'log' to log new contacts with chasers"
       end
@@ -18,6 +20,10 @@ module Activate
         self.find
       when 'log'
         self.log
+      when 'spot'
+        self.create_spot
+      when 'help'
+        self.help
       else
         #do seomething else
       end
@@ -25,13 +31,13 @@ module Activate
   end #activate loop
 
   def find
-    puts "Search by, 'association', or 'points'"
-    case input = get_user_string
-    when 'region'
-      Summit.group(:association_name).count.each { |asc,value| puts "#{asc}: #{value}" }
-    else
-      puts "Not done yet.."
-    end
+    # puts "Search by, 'association', or 'points'"
+    # case input = get_user_string
+    # when 'region'
+    #   Summit.group(:association_name).count.each { |asc,value| puts "#{asc}: #{value}" }
+    # else
+    #   puts "Not done yet.."
+    # end
   end
 
   def log #this is a good place to use the qrz api
@@ -57,5 +63,13 @@ module Activate
     self.spot = Spot.new(summit: summit, activator: self.user, frequency: freq)
     puts "Posting your spot for: #{summit.summit_code} on: #{freq} MHz..."
     puts "Use 'log' to log new contacts"
+  end
+
+  def help
+  puts """help: display this message
+log: log a new contact with chasers, must use 'spot' to create spot first
+spot: create and post a new spot for chasers to find you
+main: return to main menu
+quit: exit right now!"""
   end
 end
