@@ -14,16 +14,17 @@ class User < ActiveRecord::Base
   end
 
   def activator_points
+    # activated_summits.pluck(:points).reduce(:+)
     activated_summits.reduce(0) {|pts, summit| pts + summit.points}
   end
   def chaser_points
     chased_summits.reduce(0) {|pts, summit| pts + summit.points}
   end
-
-  def activator=(bool)
-    super(bool)
-    self.save
-  end
+  # 
+  # def activator=(bool)
+  #   super(bool)
+  #   self.save
+  # end
 
   def contact_from_spot(spot)
       self.chaser_contacts.create(summit_id: spot.summit.id,
