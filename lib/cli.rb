@@ -1,12 +1,15 @@
 class Interface
-  attr_accessor :user, :settings, :spot
+  attr_accessor :user, :settings
   include Activate
   include Chase
   include Main
   def initialize()
     @running = true
     @user = nil
-    @settings = {max_spots: 4, region_filter: nil, range_filter: nil}
+    @settings = {max_spots: 4,
+                 region_filter: nil,
+                 range_filter: nil,
+                 live_data: true}
     @spot = nil
   end
 
@@ -70,6 +73,7 @@ class Interface
         end
       when 'settings'
         puts "changing your settings..."
+        self.change_settings
       when 'new'
         self.new_user
       when 'delete user'

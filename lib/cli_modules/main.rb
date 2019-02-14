@@ -31,7 +31,7 @@ module Main
   end #who are you
 
   def help
-    puts '''`clear`
+    puts '''
 activate: _ _ operate as an activator
 chase:        operate as a chaser
 points: _ _ _ view a users SOTA points
@@ -40,13 +40,14 @@ spots: _ _ _ _view current spots from activators
 settings:     change your user settings
 user: _ _ _ _ load or change users
 users:        list all current users
-delete users: delete current user profile
+delete user:  delete current user profile
+new: _ _ _ _  create a new user
 '''
   end
   def no_user
     puts "No user profile, use 'user' to set one"
   end
-  
+
   def show_spots(num)
     Spot.clear
     fetcher = Fetcher.new(max_spots: num) unless Spot.all.count > num
@@ -64,5 +65,24 @@ delete users: delete current user profile
     grid = gets.strip
     self.user = User.create(name: name, call_sign: call_sign, grid: grid)
     puts "Awesome! created: #{user.id}, Named: #{user.name} in grid: #{user.grid}, call sign: #{user.call_sign}"
+  end
+
+  def change_settings
+    puts `clear`
+    puts "*** Setings Menu ***"
+    self.settings.each_with_index do |setting, i|
+      puts "(#{i + 1}.) #{setting[0]}: #{setting[1]}"
+    end
+    puts "Enter a setting to change, 'done' to go back to main menu"
+    until (input = get_user_string) == 'done'
+      i = input.to_i - 1
+      puts "Changing #{settings.keys[i]}: #{settings.values[i]}"
+      input = get_user_string
+      binding.pry
+      case settings.keys[i].class
+      when Integer
+        settings[settings.keys[i]] = input.to_i
+      end
+    end
   end
 end
