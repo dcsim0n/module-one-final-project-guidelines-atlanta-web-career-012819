@@ -40,13 +40,13 @@ spots: _ _ _ _view current spots from activators
 settings:     change your user settings
 user: _ _ _ _ load or change users
 users:        list all current users
-delete users: delete current user profile
+delete user: delete current user profile
 '''
   end
   def no_user
     puts "No user profile, use 'user' to set one"
   end
-  
+
   def show_spots(num)
     Spot.clear
     fetcher = Fetcher.new(max_spots: num) unless Spot.all.count > num
