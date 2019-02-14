@@ -1,5 +1,5 @@
 class Interface
-  attr_accessor :user, :settings
+  attr_accessor :user, :settings, :spot
   include Activate
   include Chase
   include Main
