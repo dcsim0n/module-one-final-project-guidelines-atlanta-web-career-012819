@@ -34,8 +34,8 @@ class Interface
         self.help
       when 'chase'
         if self.user
-          user.activator = false
-          puts `clear`
+          user.update(activator: false)
+          # user.activator = false
           puts "Seting status to chasing...."
           puts "Here is some recent activity"
           self.show_spots(2)
@@ -48,7 +48,8 @@ class Interface
         puts "Showing all your contacts..."
       when 'activate'
         if self.user
-          user.activator = true
+          user.update(activator: true)
+          # user.activator = true
           puts "Seting status to activating! Yeehaw!"
           self.activate
         else
