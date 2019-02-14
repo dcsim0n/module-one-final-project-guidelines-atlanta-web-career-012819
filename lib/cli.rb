@@ -10,7 +10,10 @@ class Interface
 
   def run    #start the loop
     while @running
-      puts "Welcome, please enter a command:"
+      puts "**** Main Menu, please enter a command:"
+      if self.user
+        puts "You are currently operating as #{self.user.activator ? 'Activator' : 'Chaser'}"
+      end
        #get some user input
       input = get_user_string
       main_tree(input)
@@ -37,14 +40,14 @@ class Interface
         else
           no_user
         end
-
+      when 'contacts'
       when 'activate'
-        if user == nil
-          self.no_user
-        else
+        if self.user
           user.activator = true
           puts "Seting status to activating! Yeehaw!"
           puts "Lets activate!"
+        else
+          self.no_user
         end
       when 'user'
         self.who_are_you

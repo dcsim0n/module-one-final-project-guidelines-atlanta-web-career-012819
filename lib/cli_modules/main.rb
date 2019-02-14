@@ -14,7 +14,6 @@ module Main
   end #get user int
 
   def who_are_you
-    puts "OK, Lets chase some summits!"
     puts "Enter your call sign:"
     begin
       call = self.get_user_string
@@ -27,7 +26,7 @@ module Main
       puts "Couldn't find your callsign, if you are new create a new User"
       return
     end
-    puts "Welcome #{@user.name}"
+    puts "Welcome #{@user.name}."
   end #who are you
 
   def help
