@@ -1,5 +1,6 @@
 class Interface
   attr_accessor :user, :settings
+  include Activate
   include Chase
   include Main
   def initialize()
@@ -41,11 +42,14 @@ class Interface
           no_user
         end
       when 'contacts'
+        #This will be another run loop
+        puts "Showing all your contacts..."
       when 'activate'
         if self.user
           user.activator = true
           puts "Seting status to activating! Yeehaw!"
           puts "Lets activate!"
+          self.activate
         else
           self.no_user
         end
@@ -67,6 +71,16 @@ class Interface
         puts "changing your settings..."
       when 'new'
         self.new_user
+      when 'delete user'
+        if self.user
+          puts "Deleting #{self.user.call_sign} from the database"
+          self.user.destroy()
+          self.user = nil
+        end
+      when 'users'
+        User.all.each do |user|
+          puts "#{user.call_sign}: #{user.name}   - #{user.grid}"
+        end
       else
         puts "Unknown command, type help for a list of commands."
       end

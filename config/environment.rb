@@ -7,6 +7,7 @@ Bundler.require
 
 require_relative '../lib/cli_modules/main.rb'
 require_relative '../lib/cli_modules/chase.rb'
+require_relative '../lib/cli_modules/activate.rb'
 
 require_relative '../lib/summit.rb'
 require_relative '../lib/user.rb'

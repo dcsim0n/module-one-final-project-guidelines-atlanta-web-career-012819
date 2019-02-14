@@ -56,7 +56,7 @@ module Main
     call_sign = get_user_string
     puts "Great, enter your Grid square, or enter if you don't know it"
     grid = gets.strip
-    user = User.create(name: name, call_sign: call_sign, grid: grid)
+    self.user = User.create(name: name, call_sign: call_sign, grid: grid)
     puts "Awesome! created: #{user.id}, Named: #{user.name} in grid: #{user.grid}, call sign: #{user.call_sign}"
   end
 end
