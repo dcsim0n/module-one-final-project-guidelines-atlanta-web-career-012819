@@ -47,10 +47,10 @@ class Spot
       call = spot.activator.call_sign
       name = spot.activator.name
       freq = spot.frequency
-      puts """\n( #{i + 1}. )*** #{summit_name}, #{height} ft, #{points} points ***
-- #{summit_code}
-- #{call}: #{name}
-- frequency: #{freq}\n"""
+      puts """\n( #{i + 1}.)*** #{summit_name}, #{height} ft, #{points} points, Summit Code: #{summit_code} ***
+- #{name} in #{spot.summit.association_name}
+- Activator Call: #{call}
+- Frequency: #{freq}\n"""
     end
     nil
   end

@@ -73,9 +73,13 @@ class Interface
         self.new_user
       when 'delete user'
         if self.user
-          puts "Deleting #{self.user.call_sign} from the database"
-          self.user.destroy()
-          self.user = nil
+          puts "Deleting #{self.user.call_sign} from the database? Y/N"
+          if get_user_string == 'Y'
+            self.user.destroy()
+            self.user = nil
+          else
+            puts "Canceled.."
+          end
         end
       when 'users'
         User.all.each do |user|

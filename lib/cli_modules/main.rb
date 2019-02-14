@@ -30,13 +30,17 @@ module Main
   end #who are you
 
   def help
-    puts '''help: print this message
-  chase: operate as a chaser
-  activate: operate as an activator
-  spots: view current spots from activators
-  settings: change your user settings
-  user: load or change users
-  points: view a users SOTA points'''
+    puts '''
+activate: _ _ operate as an activator
+chase:        operate as a chaser
+points: _ _ _ view a users SOTA points
+help:         print this message
+spots: _ _ _ _view current spots from activators
+settings:     change your user settings
+user: _ _ _ _ load or change users
+users:        list all current users
+delete users: delete current user profile
+'''
   end
   def no_user
     puts "No user profile, use 'user' to set one"
