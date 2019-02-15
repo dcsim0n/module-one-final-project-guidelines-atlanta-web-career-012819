@@ -1,11 +1,14 @@
-class Gridsquare < GeoKit::Mappable
+class Gridsquare
+  include Geokit::Mappable
   ALPHABET = ('A'..'S').to_a
 
-  attr_reader :lat, :lng
+  attr_reader :coordinate, :grid
   def initialize(grid_string:)
-    @lat, @lng = Gridsquare.grid_string_to_lat_long(grid_strin)
-
+    @grid = grid_string
+    lat,lng = Gridsquare.grid_string_to_lat_long(grid_string)
+    @coordinate = Geokit::LatLng.new(lat,lng)
   end
+  
   def self.alpha_to_int(alpha)
     ALPHABET.find_index(alpha)
   end
