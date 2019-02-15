@@ -3,8 +3,8 @@ class Gridsquare
 
   attr_reader :coordinate, :grid
   def initialize(grid:)
-    @grid = grid_string
-    lat,lng = Gridsquare.grid_string_to_lat_long(grid_string)
+    @grid = grid
+    lat,lng = Gridsquare.grid_string_to_lat_long(grid)
     @coordinate = Geokit::LatLng.new(lat,lng)
   end
 
