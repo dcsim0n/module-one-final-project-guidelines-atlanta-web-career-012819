@@ -28,6 +28,7 @@ class Gridsquare
     latitude = latitude - 90
   end
   def self.calc_lng_sub_square(alpha)
+    binding.pry
     mult = self.alpha_to_int(alpha.upcase)
     0.083334 * mult
   end
@@ -44,6 +45,7 @@ class Gridsquare
     #Six character strings would be more precise, we will get there.
     longMSB = alpha_to_int(grid_string[0])
     longLSB = grid_string[2].to_i
+    binding.pry
     long_sub = calc_lng_sub_square(grid_string[4])
 
 

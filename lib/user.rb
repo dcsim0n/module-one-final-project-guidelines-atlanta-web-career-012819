@@ -6,13 +6,30 @@ class User < ActiveRecord::Base
   has_many :activated_summits, through: :activator_contacts, source: :summit
 
 
+  include Geokit::Mappable
+
+  def self.lat_column_name #tell Geokit where to get the latitude
+    :lat
+  end
+
+  def self.lng_column_name #tell Geokit where to get the longitude
+    :lng
+  end
+
+  def lat
+    Gridsquare.grid_string_to_lat_long(self.grid)[0]
+  end
+
+  def lng
+    Gridsquare.grid_string_to_lat_long(self.grid)[1]
+  end
+
   def settings
     #This gives me a named hash to make settings easier
     sets = {}
     self.user_settings.each { |s| sets[s.setting_name] = s  }
     sets
   end
-
   def activator_points
     # activated_summits.pluck(:points).reduce(:+)
     activated_summits.reduce(0) {|pts, summit| pts + summit.points}
@@ -20,20 +37,20 @@ class User < ActiveRecord::Base
   def chaser_points
     chased_summits.reduce(0) {|pts, summit| pts + summit.points}
   end
-  # 
+  #
   # def activator=(bool)
   #   super(bool)
   #   self.save
   # end
 
   def contact_from_spot(spot)
-      self.chaser_contacts.create(summit_id: spot.summit.id,
+      contact = self.chaser_contacts.create(summit_id: spot.summit.id,
                                   activator_id: spot.activator.id,
                                   freq: spot.frequency,
                                   band: 'no band',
                                   date: Time.now)
       self.reload
-
+      contact
   end
 
   def contact_with_chaser_and_spot(name:, call_sign:, spot:)
