@@ -18,3 +18,5 @@
 
 ### Gridsquare
 * check for errors when dealing with grids in other hemispheres
+* GeoKit Docs https://www.rubydoc.info/github/geokit/geokit/master/Geokit
+* Great explanation of how decode gridsquares http://www.hamradio.in/circuits/grid_locator_system.php
